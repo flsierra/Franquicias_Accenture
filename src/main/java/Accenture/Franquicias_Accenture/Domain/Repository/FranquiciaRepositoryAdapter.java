@@ -5,6 +5,7 @@ import Accenture.Franquicias_Accenture.Infrastructure.FranquiciaR2dbcRepository;
 import Accenture.Franquicias_Accenture.Infrastructure.Persistence.FranquiciaEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
@@ -27,6 +28,11 @@ public class FranquiciaRepositoryAdapter implements FranquiciaRepository {
         e.setId(f.getId());
         e.setNombre(f.getNombre());
         return e;
+    }
+    @Override
+    public Flux<Franquicia> listarTodas() {
+        return repository.findAll()
+                .map(this::aDominio);
     }
     private Franquicia aDominio(FranquiciaEntity e) {
         return new Franquicia(e.getId(), e.getNombre());

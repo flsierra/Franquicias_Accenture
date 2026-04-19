@@ -1,11 +1,12 @@
-package Accenture.Franquicias_Accenture.Application.Dtos;
+package Accenture.Franquicias_Accenture.Interfaces;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class RespuestaDTO<T> {
+public class ResponseError {
+
     private String mensaje;
-    private T data;
+    private int codigo;
 }
