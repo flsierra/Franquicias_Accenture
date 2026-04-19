@@ -1,0 +1,14 @@
+target
+**/target
+*.log
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+.idea
+.vscode
+*.iml
+.mvn/wrapper/.gitignore
+Dockerfile
+DockerFile
+*.jar

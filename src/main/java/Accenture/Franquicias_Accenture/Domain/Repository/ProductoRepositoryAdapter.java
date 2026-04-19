@@ -47,7 +47,10 @@ public class ProductoRepositoryAdapter implements ProductoRepository {
 
     private ProductoEntity aEntidad(Producto p) {
         ProductoEntity e = new ProductoEntity();
-        e.setId(p.getId());
+        // No copiar el ID para nuevas entidades, dejar que la BD lo genere
+        if (p.getId() != null && p.getId() > 0) {
+            e.setId(p.getId());
+        }
         e.setNombre(p.getNombre());
         e.setStock(p.getStock());
         e.setSucursalId(p.getSucursalId());

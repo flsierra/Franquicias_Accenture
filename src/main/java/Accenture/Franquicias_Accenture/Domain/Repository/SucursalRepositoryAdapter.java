@@ -37,7 +37,10 @@ public class SucursalRepositoryAdapter implements SucursalRepository {
     }
     private SucursalEntity aEntidad(Sucursal s) {
         SucursalEntity e = new SucursalEntity();
-        e.setId(s.getId());
+        // No copiar el ID para nuevas entidades, dejar que la BD lo genere
+        if (s.getId() != null && s.getId() > 0) {
+            e.setId(s.getId());
+        }
         e.setNombre(s.getNombre());
         e.setFranquiciaId(s.getFranquiciaId());
         return e;

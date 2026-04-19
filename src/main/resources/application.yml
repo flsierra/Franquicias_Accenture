@@ -1,8 +1,8 @@
 spring:
   r2dbc:
-    url: r2dbc:mysql://localhost:3306/Franquicias_Accenture
-    username: root
-    password:
+    url: ${SPRING_R2DBC_URL:r2dbc:mysql://localhost:3306/Franquicias_Accenture}
+    username: ${SPRING_R2DBC_USERNAME:root}
+    password: ${SPRING_R2DBC_PASSWORD:}
 
   sql:
     init:

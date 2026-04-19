@@ -25,7 +25,10 @@ public class FranquiciaRepositoryAdapter implements FranquiciaRepository {
     }
     private FranquiciaEntity aEntidad(Franquicia f) {
         FranquiciaEntity e = new FranquiciaEntity();
-        e.setId(f.getId());
+        // No copiar el ID para nuevas entidades, dejar que la BD lo genere
+        if (f.getId() != null && f.getId() > 0) {
+            e.setId(f.getId());
+        }
         e.setNombre(f.getNombre());
         return e;
     }
