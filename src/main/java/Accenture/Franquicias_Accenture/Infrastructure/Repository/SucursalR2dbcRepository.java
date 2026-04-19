@@ -1,5 +1,6 @@
-package Accenture.Franquicias_Accenture.Infrastructure.Persistence;
+package Accenture.Franquicias_Accenture.Infrastructure.Repository;
 
+import Accenture.Franquicias_Accenture.Infrastructure.Persistence.SucursalEntity;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

@@ -1,4 +1,4 @@
-package Accenture.Franquicias_Accenture.Infrastructure;
+package Accenture.Franquicias_Accenture.Infrastructure.Repository;
 import Accenture.Franquicias_Accenture.Infrastructure.Persistence.FranquiciaEntity;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;

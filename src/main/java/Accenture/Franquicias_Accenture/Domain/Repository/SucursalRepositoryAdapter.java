@@ -2,7 +2,7 @@ package Accenture.Franquicias_Accenture.Domain.Repository;
 
 import Accenture.Franquicias_Accenture.Domain.Model.Sucursal;
 import Accenture.Franquicias_Accenture.Infrastructure.Persistence.SucursalEntity;
-import Accenture.Franquicias_Accenture.Infrastructure.Persistence.SucursalR2dbcRepository;
+import Accenture.Franquicias_Accenture.Infrastructure.Repository.SucursalR2dbcRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;

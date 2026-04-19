@@ -1,7 +1,7 @@
 package Accenture.Franquicias_Accenture.Domain.Repository;
 
 import Accenture.Franquicias_Accenture.Domain.Model.Franquicia;
-import Accenture.Franquicias_Accenture.Infrastructure.FranquiciaR2dbcRepository;
+import Accenture.Franquicias_Accenture.Infrastructure.Repository.FranquiciaR2dbcRepository;
 import Accenture.Franquicias_Accenture.Infrastructure.Persistence.FranquiciaEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
