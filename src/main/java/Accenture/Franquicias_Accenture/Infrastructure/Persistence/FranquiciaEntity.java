@@ -9,6 +9,5 @@ public class FranquiciaEntity {
 
     @Id
     private Long id;
-
     private String nombre;
 }

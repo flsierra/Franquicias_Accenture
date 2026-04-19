@@ -7,4 +7,6 @@ import reactor.core.publisher.Mono;
 public interface SucursalRepository {
     Mono<Sucursal> guardar(Sucursal sucursal);
     Flux<Sucursal> buscarPorFranquiciaId(Long franquiciaId);
+    Mono<Boolean> existePorNombreYFranquiciaId(String nombre, Long franquiciaId);
+    Mono<Sucursal> buscarPorId(Long id);
 }
