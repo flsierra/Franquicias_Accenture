@@ -31,4 +31,7 @@ public class FranquiciaRepositoryAdapter implements FranquiciaRepository {
     private Franquicia aDominio(FranquiciaEntity e) {
         return new Franquicia(e.getId(), e.getNombre());
     }
+    public Mono<Boolean> existeFranquicia(String nombre) {
+        return repository.existsByNombre(nombre);
+    }
 }
