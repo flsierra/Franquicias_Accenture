@@ -9,7 +9,12 @@ spring:
       mode: never
 
 server:
-  port: ${PORT:5000}
+  port: 8080
+  # ssl:
+  #   key-store: classpath:keystore.p12
+  #   key-store-password: franquicias123
+  #   key-store-type: PKCS12
+  #   key-alias: franquicias
 
 springdoc:
   swagger-ui:
