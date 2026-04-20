@@ -20,6 +20,7 @@ Definidas en Franquicias_Accenture/src/main/resources/application.yml y provista
 ## URLs
 * Backend API (Docker): http://localhost:8080
 * Swagger (Docker): http://localhost:8080/swagger-ui.html
+
 ##Recomendación importante para ver la Api desplegada en AWS
 Debido a que la solución se desplego en la capa gratuita de AWS, está no emite certificados SSL por lo que cuando se abre esta url va a lanzar error de Seguridad de Certificados la cual debemos saltar y continuar al sitio donde se encontrará un Swagger con todos los EndPoints solcitados en la prueba.
 * Backend API (Nube): https://ebcreatefranquicias-env-env.eba-2tuq8fwu.us-east-2.elasticbeanstalk.com:5000/webjars/swagger-ui/index.html
