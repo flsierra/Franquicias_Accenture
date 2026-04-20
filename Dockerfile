@@ -11,7 +11,7 @@ RUN mvn -B clean package -DskipTests
 FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
-COPY --from=builder /app/target/franchise-api-1.0.0.jar app.jar
+COPY --from=builder /app/target/application.jar app.jar
 
 EXPOSE 8080
 
