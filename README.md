@@ -16,7 +16,7 @@ Definidas en Franquicias_Accenture/src/main/resources/application.yml y provista
 ## Inicio rápido App
 * docker compose build
 * docker compose up -d
-* 
+
 ## URLs
 * Backend API (Docker): http://localhost:8080
 * Swagger (Docker): http://localhost:8080/swagger-ui.html
