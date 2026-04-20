@@ -5,14 +5,14 @@ Esta es una prueba tecnica a nivel Backend para la empresa Accenture que simula 
 
 ## Requisitos
 * Docker y Docker Compose Instalados
-* 
+
 ## Variables de entrono 
 Definidas en Franquicias_Accenture/src/main/resources/application.yml y provistas por docker-compose.yml;
 * ${SPRING_R2DBC_USERNAME}: root
 * ${SPRING_R2DBC_PASSWORD}: ""
 *  SPRING_R2DBC_URL: r2dbc:mysql://mysql:3306/Franquicias_Accenture
 *  ${PORT:8080}
-*  
+   
 ## Inicio rápido App
 * docker compose build
 * docker compose up -d
@@ -21,7 +21,7 @@ Definidas en Franquicias_Accenture/src/main/resources/application.yml y provista
 * Backend API (Docker): http://localhost:8080
 * Swagger (Docker): http://localhost:8080/swagger-ui.html
 * Backen API (Nube): http://ebcreatefranquicias-env-env.eba-2tuq8fwu.us-east-2.elasticbeanstalk.com/webjars/swagger-ui/index.html#/
-* 
+  
 ## 📁 Estructura del Proyecto
 
 ```text
