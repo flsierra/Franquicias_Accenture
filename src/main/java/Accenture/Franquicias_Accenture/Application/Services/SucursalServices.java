@@ -59,40 +59,59 @@ public class SucursalServices {
 
         return sucursalRepository.buscarPorId(id)
                 .switchIfEmpty(Mono.error(
-                        new RegistroApiException("Sucursal no encontrada", HttpStatus.NOT_FOUND)
+                        new RegistroApiException(
+                                "Sucursal no encontrada",
+                                HttpStatus.NOT_FOUND)
                 ))
-                .flatMap(sucursalExistente ->
-                        franquiciaRepository.buscarPorId(sucursalExistente.getFranquiciaId())
-                                .flatMap(franquicia ->
-                                        sucursalRepository.existePorNombreYFranquiciaId(
-                                                        sucursal.getNombre(),
-                                                        franquicia.getId()
+                .flatMap(sucursalExistente -> {
+
+                    String nombreNuevo = sucursal.getNombre().trim();
+                    String nombreActual = sucursalExistente.getNombre().trim();
+
+                    // Si el nombre no cambia, evitar consulta innecesaria
+                    if (nombreNuevo.equalsIgnoreCase(nombreActual)) {
+
+                        sucursalExistente.setNombre(nombreNuevo);
+
+                        return sucursalRepository.guardar(sucursalExistente)
+                                .map(s -> new RespuestaDTO<>(
+                                        "Sucursal actualizada exitosamente",
+                                        new SucursalResponseDTO(
+                                                s.getId(),
+                                                s.getNombre(),
+                                                s.getFranquiciaId(),
+                                                null
+                                        )
+                                ));
+                    }
+                    return sucursalRepository
+                            .existePorNombreYFranquiciaId(
+                                    nombreNuevo,
+                                    sucursalExistente.getFranquiciaId()
+                            )
+                            .flatMap(existe -> {
+
+                                if (existe) {
+                                    return Mono.error(
+                                            new RegistroApiException(
+                                                    "Ya existe una sucursal con ese nombre en la franquicia",
+                                                    HttpStatus.BAD_REQUEST
+                                            )
+                                    );
+                                }
+                                sucursalExistente.setNombre(nombreNuevo);
+                                return sucursalRepository.guardar(sucursalExistente)
+                                        .map(s -> new RespuestaDTO<>(
+                                                "Sucursal actualizada exitosamente",
+                                                new SucursalResponseDTO(
+                                                        s.getId(),
+                                                        s.getNombre(),
+                                                        s.getFranquiciaId(),
+                                                        null
                                                 )
-                                                .flatMap(existe -> {
-                                                    String nombreNuevo = sucursal.getNombre().trim().toLowerCase();
-                                                    String nombreActual = sucursalExistente.getNombre().trim().toLowerCase();
-                                                    if (existe && !nombreNuevo.equals(nombreActual)) {
-                                                        return Mono.error(
-                                                                new RegistroApiException(
-                                                                        "Ya existe una sucursal con ese nombre en la franquicia, valide... ",
-                                                                        HttpStatus.BAD_REQUEST
-                                                                )
-                                                        );
-                                                    }
-                                                    sucursalExistente.setNombre(sucursal.getNombre());
-                                                    return sucursalRepository.guardar(sucursalExistente)
-                                                            .map(s -> new RespuestaDTO<>(
-                                                                    "Sucursal actualizada exitosamente",
-                                                                    new SucursalResponseDTO(
-                                                                            s.getId(),
-                                                                            s.getNombre(),
-                                                                            s.getFranquiciaId(),
-                                                                            franquicia.getNombre()
-                                                                    )
-                                                            ));
-                                                })
-                                )
-                );
+                                        ));
+                            });
+                });
     }
     // Lista kas sucursales relacionadas a una Franquicia
     public Flux<SucursalResponseDTO> listarSucursalesPorFranquicia(Long franquiciaId) {
